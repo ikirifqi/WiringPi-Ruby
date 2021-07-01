@@ -23,12 +23,14 @@ module WiringPi
 
   class Modules
     class ModuleBase
-      @name = 'Unknown'
-      @pin_base = 0
-      @pin_count = 0
-      @pin_end = 0
-
       attr_reader :name, :pin_base, :pin_count, :pin_end
+
+      def initialize
+        @name = 'Unknown'
+        @pin_base = 0
+        @pin_count = 0
+        @pin_end = 0
+      end
 
       def new
         @pin_end = @pin_base + @pin_count
@@ -36,10 +38,10 @@ module WiringPi
       end
 
       def update_name
-        @name = ' at offset ' + @pin_base.to_s
+        @name = " at offset #{@pin_base}"
       end
     end
   end
 end
 
-Dir[File.dirname(__FILE__) + '/wiringpi/*.rb'].each { |file| require file }
+Dir[File.dirname(__FILE__) + '/wiringpi/**/*.rb'].each { |file| require file }
