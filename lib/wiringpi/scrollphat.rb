@@ -1,35 +1,35 @@
 module WiringPi
 	class ScrollPhat
-		def initialize()
-			Wiringpi.scrollPhatSetup()
+		def initialize
+			Wiringpi.scrollPhatSetup
 		end
 
 		def printf(text)
 			Wiringpi.scrollPhatPrintf(text)
 		end
 
-		def point(x, y, colour)
-			Wiringpi.scrollPhatPoint(x, y, colour)
+		def point(x, y, color)
+			Wiringpi.scrollPhatPoint(x, y, color)
 		end
 
-		def line(x0, y0, x1, y1, colour)
-			Wiringpi.scrollPhatLine(x0, y0, x1, y1, colour)
+		def line(x0, y0, x1, y1, color)
+			Wiringpi.scrollPhatLine(x0, y0, x1, y1, color)
 		end
 
-		def lineTo(x, y, colour)
-			Wiringpi.scrollPhatLineTo(x, y, colour)
+		def lineTo(x, y, color)
+			Wiringpi.scrollPhatLineTo(x, y, color)
 		end
 
-		def rectangle(x1, y1, x2, y2, colour)
-			Wiringpi.scrollPhatRectangle(x1, y1, x2, y2, colour)
+		def rectangle(x1, y1, x2, y2, color)
+			Wiringpi.scrollPhatRectangle(x1, y1, x2, y2, color)
 		end
 
-		def update()
-			Wiringpi.scrollPhatUpdate()
+		def update
+			Wiringpi.scrollPhatUpdate
 		end
 
-		def clear()
-			Wiringpi.scrollPhatClear()
+		def clear
+			Wiringpi.scrollPhatClear
 		end
 
 		def putChar(char)
