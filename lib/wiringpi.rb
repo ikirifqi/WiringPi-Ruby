@@ -1,4 +1,5 @@
 require 'wiringpi/wiringpi'
+
 module WiringPi
   extend self
 
