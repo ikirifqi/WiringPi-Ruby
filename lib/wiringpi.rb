@@ -2,8 +2,13 @@ require 'wiringpi/wiringpi'
 module WiringPi
   extend self
 
+  # GPIO signal
   HIGH = 1
   LOW = 0
+
+  # GPIO signal event
+  FALLING = :falling
+  RISING = :rising
 
   INPUT = 0
   OUTPUT = 1
@@ -18,7 +23,6 @@ module WiringPi
 
   class Modules
     class ModuleBase
-
       @name = 'Unknown'
       @pin_base = 0
       @pin_count = 0
@@ -28,15 +32,14 @@ module WiringPi
 
       def new
         @pin_end = @pin_base + @pin_count
-        updateName
+        update_name
       end
 
-      def updateName
+      def update_name
         @name = ' at offset ' + @pin_base.to_s
       end
-
     end
   end
-
 end
-Dir[File.dirname(__FILE__) + '/wiringpi/*.rb'].each {|file| require file }
+
+Dir[File.dirname(__FILE__) + '/wiringpi/*.rb'].each { |file| require file }
