@@ -2,10 +2,11 @@ module WiringPi
   class GPIO
     attr_reader :modules, :pins
 
-    def initialize(&block)
-      Wiringpi.wiringPiSetup
+    def initialize(pin_layout = GPIO_WPI, &block)
+      @pin_layout = pin_layout
       @pins = []
       @modules = []
+      setup_wiring_pi
       instance_eval &block if block_given?
     end
 
@@ -127,6 +128,18 @@ module WiringPi
 
       module_instance.pin_count.times do |offset|
         @pins[offset + module_instance.pin_base] = 'ENABLED'
+      end
+    end
+
+    private
+
+    def setup_wiring_pi
+      case @pin_layout
+      when GPIO_WPI; Wiringpi.wiringPiSetup
+      when GPIO_NORMAL; Wiringpi.wiringPiSetupGpio
+      when GPIO_PHYSICAL; Wiringpi.wiringPiSetupPhys
+      when GPIO_SYSTEM; Wiringpi.wiringPiSetupSys
+      else raise 'unknown pin layout to setup'
       end
     end
   end

@@ -3,6 +3,12 @@ require 'wiringpi/wiringpi'
 module WiringPi
   extend self
 
+  # GPIO WiringPi PIN layout mode
+  GPIO_WPI = 0
+  GPIO_NORMAL = 1
+  GPIO_PHYSICAL = 2
+  GPIO_SYSTEM = 3
+
   # GPIO signal
   HIGH = 1
   LOW = 0
