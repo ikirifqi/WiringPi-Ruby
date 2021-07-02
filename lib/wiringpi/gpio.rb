@@ -24,7 +24,8 @@ module WiringPi
 
     def digital_read(pin)
       pin = [pin] unless pin.respond_to?(:each)
-      pin.collect { |pin| Wiringpi.digitalRead(pin) }
+      res = pin.collect { |pin| Wiringpi.digitalRead(pin) }
+      res.count == 1 ? res.first : res
     end
 
     def digital_write(pin, value)

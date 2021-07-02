@@ -11,6 +11,7 @@ module WiringPi
   FALLING = :falling
   RISING = :rising
 
+  # PIN mode
   INPUT = 0
   OUTPUT = 1
   PWM_OUTPUT = 1
