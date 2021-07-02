@@ -23,14 +23,25 @@ module WiringPi
     end
 
     def digital_read(pin)
-      pin = [pin] unless pin.respond_to?(:each)
-      res = pin.collect { |pin| Wiringpi.digitalRead(pin) }
+      pins = [pin] unless pin.is_a?(Array)
+      res = pins.collect { |pin| Wiringpi.digitalRead(pin) }
       res.count == 1 ? res.first : res
     end
 
     def digital_write(pin, value)
-      pin = [pin] unless pin.respond_to?(:each)
-      pin.each { |pin| Wiringpi.digitalWrite(pin, value) }
+      pins = [pin] unless pin.is_a?(Array)
+      pins.each { |pin| Wiringpi.digitalWrite(pin, value) }
+    end
+
+    def analog_read(pin)
+      pins = [pin] unless pin.is_a?(Array)
+      res = pins.collect { |pin| Wiringpi.analogRead(pin) }
+      res.count == 1 ? res.first : res
+    end
+
+    def analog_write(pin, value)
+      pins = [pin] unless pin.is_a?(Array)
+      pins.each { |pin| Wiringpi.analogWrite(pin, value) }
     end
 
     def pin_mode(pin, mode)
