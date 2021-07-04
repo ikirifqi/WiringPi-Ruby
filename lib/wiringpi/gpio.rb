@@ -23,7 +23,6 @@ module WiringPi
 
       @pins = []
       @modules = []
-      setup_wiring_pi
       instance_eval &block if block_given?
     end
 
